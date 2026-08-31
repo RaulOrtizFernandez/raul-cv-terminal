@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Raúl Ortiz Fernández — Interactive CV</title>
+<meta name="description" content="CV interactivo de Raúl Ortiz Fernández, administrador de sistemas informáticos y redes en formación de ciberseguridad. Explora experiencia, formación y contacto desde una terminal." />
+<meta name="author" content="Raúl Ortiz Fernández" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Raúl Ortiz Fernández — Interactive CV" />
+<meta property="og:description" content="CV interactivo en formato terminal: experiencia, formación, habilidades y contacto." />
+<meta property="og:locale" content="es_ES" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23171c23'/%3E%3Ctext x='50' y='64' font-size='52' text-anchor='middle' fill='%234fb3a9' font-family='monospace'%3E%3E_%3C/text%3E%3C/svg%3E" />
+
+<link rel="stylesheet" href="assets/style.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Raúl Ortiz Fernández",
+  "jobTitle": "Administrador de sistemas informáticos y redes",
+  "email": "mailto:raulorfe07@gmail.com",
+  "sameAs": ["https://github.com/RaulOrtizFernandez/RaulOrtizFernandez"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "L'Hospitalet de Llobregat",
+    "addressCountry": "ES"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- Contenido estático accesible para buscadores y sin JS -->
+<noscript>
+  <main style="font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 16px; color:#111;">
+    <h1>Raúl Ortiz Fernández</h1>
+    <p>Administrador de Sistemas Informáticos en Red — perfil Ciberseguridad</p>
+    <h2>Sobre mí</h2>
+    <p>Estudiante responsable y organizado, con buena disciplina y ganas de aprender. Comprometido con mi formación académica y con mejorar continuamente mis habilidades y conocimientos.</p>
+    <h2>Experiencia</h2>
+    <p><strong>Administrador de sistemas informáticos y redes</strong> — Neo Advertising, L'Hospitalet de Llobregat (10/11/2024 – 12/06/2025)</p>
+    <p><strong>Agente de operaciones de cruceros</strong> — Intercruises Shoreside & Port Services, Barcelona (10/05/2026 – Actual)</p>
+    <h2>Formación</h2>
+    <p>Administración de Sistemas Informáticos en Red, perfil Ciberseguridad — iFP Barcelona L'Hospitalet (2025 – Actual)</p>
+    <p>Sistemas Microinformáticos y Redes — iFP Barcelona L'Hospitalet (2023 – 2025)</p>
+    <p>Educación Secundaria Obligatoria — IES Santa Eulàlia (2019 – 2023)</p>
+    <h2>Contacto</h2>
+    <p>Email: raulorfe07@gmail.com · GitHub: github.com/RaulOrtizFernandez/RaulOrtizFernandez</p>
+    <p><a href="assets/Raul_Ortiz_CV.pdf">Descargar CV en PDF</a></p>
+  </main>
+</noscript>
+
+<div class="page">
+
+  <header class="identity">
+    <img src="assets/profile.jpg" alt="Foto de Raúl Ortiz Fernández" width="46" height="46" />
+    <div>
+      <h1>Raúl Ortiz Fernández</h1>
+      <p>Administrador de Sistemas Informáticos en Red · perfil Ciberseguridad</p>
+    </div>
+  </header>
+
+  <nav class="quiet-nav" aria-label="Navegación rápida por secciones del CV">
+    <button type="button" data-run-command="about">About</button>
+    <button type="button" data-run-command="experience">Experience</button>
+    <button type="button" data-run-command="education">Education</button>
+    <button type="button" data-run-command="skills">Skills</button>
+    <button type="button" data-run-command="projects">Projects</button>
+    <button type="button" data-run-command="languages">Languages</button>
+    <button type="button" data-run-command="contact">Contact</button>
+    <button type="button" data-run-command="cv">CV</button>
+  </nav>
+
+  <section class="terminal" data-terminal aria-label="Terminal interactiva de currículum">
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <span class="dot dot--red" aria-hidden="true"></span>
+        <span class="dot dot--yellow" aria-hidden="true"></span>
+        <span class="dot dot--green" aria-hidden="true"></span>
+        <span class="titlebar-title">raul@portfolio — zsh</span>
+      </div>
+      <div class="status"><span class="dot" aria-hidden="true"></span>online</div>
+    </div>
+
+    <div class="screen" data-output role="log" aria-live="polite"></div>
+
+    <div class="chips" aria-hidden="false">
+      <button class="chip" type="button" data-run-command="about">about</button>
+      <button class="chip" type="button" data-run-command="experience">experience</button>
+      <button class="chip" type="button" data-run-command="education">education</button>
+      <button class="chip" type="button" data-run-command="skills">skills</button>
+      <button class="chip" type="button" data-run-command="contact">contact</button>
+      <button class="chip" type="button" data-run-command="cv">cv</button>
+      <button class="chip" type="button" data-run-command="clear">clear</button>
+    </div>
+
+    <form class="inputrow" data-form onsubmit="return false;">
+      <label class="prompt" for="terminal-input">raul@portfolio:~$</label>
+      <input
+        id="terminal-input"
+        data-input
+        type="text"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="Escribe un comando, por ejemplo help"
+        placeholder="type a command… try 'help'"
+      />
+    </form>
+  </section>
+
+  <p class="hint">Simulación de terminal en el navegador — no ejecuta comandos del sistema.</p>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

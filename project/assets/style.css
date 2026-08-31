@@ -1,0 +1,440 @@
+/* ============================================================
+   Design tokens
+   Concept: a clean, modern terminal — sysadmin/network-engineer
+   register, not "hacker". Deep charcoal, muted teal accent
+   (nod to networking/circuit diagrams), warm off-white text.
+   ============================================================ */
+:root {
+  --bg: #0f1318;
+  --panel: #171c23;
+  --panel-alt: #1d232b;
+  --border: #2a3139;
+  --text: #e7ecf2;
+  --muted: #8b96a3;
+  --accent: #4fb3a9;
+  --accent-soft: rgba(79, 179, 169, 0.14);
+  --warn: #d9a441;
+  --error: #e2574c;
+  --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --radius: 10px;
+  --max-w: 860px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image: radial-gradient(
+      circle at 15% 0%,
+      rgba(79, 179, 169, 0.06),
+      transparent 45%
+    ),
+    radial-gradient(circle at 100% 100%, rgba(79, 179, 169, 0.04), transparent 40%);
+  color: var(--text);
+  font-family: var(--mono);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Page shell ---------- */
+
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6vh 20px 32px;
+  gap: 20px;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: var(--max-w);
+}
+
+.identity img {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+}
+
+.identity h1 {
+  font-size: 15px;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.identity p {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* ---------- Quiet nav (alt. navigation, not command-dependent) ---------- */
+
+.quiet-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  width: 100%;
+  max-width: var(--max-w);
+  font-size: 13px;
+}
+
+.quiet-nav button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.quiet-nav button:hover,
+.quiet-nav button:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Terminal window ---------- */
+
+.terminal {
+  width: 100%;
+  max-width: var(--max-w);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--panel-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot--red {
+  background: #c9635b;
+}
+.dot--yellow {
+  background: #cba24f;
+}
+.dot--green {
+  background: #5da88a;
+}
+
+.titlebar-title {
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+.status {
+  font-size: 11px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.screen {
+  padding: 20px 18px 8px;
+  height: 58vh;
+  min-height: 360px;
+  max-height: 620px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.screen::-webkit-scrollbar {
+  width: 8px;
+}
+.screen::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+}
+
+.block {
+  margin-bottom: 6px;
+}
+
+.block.welcome {
+  margin-bottom: 14px;
+}
+
+.line {
+  min-height: 1.5em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.line.text.heading {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.rule {
+  color: var(--border);
+  letter-spacing: 1px;
+}
+
+.strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.accent-text {
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 12.5px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 12.5px;
+  text-transform: none;
+}
+
+.error {
+  color: var(--error);
+}
+
+.bullets {
+  margin: 4px 0 4px 1.1em;
+  padding: 0;
+}
+
+.bullets li {
+  margin: 2px 0;
+  padding-left: 4px;
+}
+
+.inline-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cmd-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cmd-row {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.cmd-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 1px 0;
+  min-width: 110px;
+  text-align: left;
+}
+
+.cmd-btn:hover,
+.cmd-btn:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cmd-desc {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.cv-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.cv-btn {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 7px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  background: var(--accent-soft);
+}
+
+.cv-btn--ghost {
+  border-color: var(--border);
+  color: var(--text);
+  background: transparent;
+}
+
+.cv-btn:hover,
+.cv-btn:focus-visible {
+  filter: brightness(1.15);
+}
+
+/* ---------- Input row ---------- */
+
+.inputrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.prompt {
+  color: var(--accent);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.cmd-line .prompt {
+  color: var(--accent);
+}
+
+.cmd-line .typed {
+  color: var(--text);
+}
+
+input[data-input] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+  caret-color: var(--accent);
+}
+
+input[data-input]::placeholder {
+  color: var(--muted);
+}
+
+/* ---------- Mobile command chips ---------- */
+
+.chips {
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 18px 12px;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: var(--panel-alt);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.chip:active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.hint {
+  width: 100%;
+  max-width: var(--max-w);
+  text-align: center;
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 4vh 12px 20px;
+    gap: 14px;
+  }
+  .screen {
+    height: 50vh;
+    font-size: 13px;
+  }
+  .chips {
+    display: flex;
+  }
+  .cmd-desc {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
